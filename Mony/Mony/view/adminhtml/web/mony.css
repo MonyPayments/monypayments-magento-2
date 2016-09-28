@@ -1,0 +1,12 @@
+span.mony-logo {
+	background:url(images/mony-logo.jpg) no-repeat 0 0 / 145px auto;
+	line-height:36px; 
+	padding-bottom: 12px;
+
+    background-size: 120px 120px;
+    height: 112px;
+    width: 120px;
+
+    display: inline-block;
+    vertical-align: bottom;
+}

@@ -1,0 +1,14 @@
+<?php
+/** @var Mony\Mony\Block\Card $this */
+?>
+<script>
+    window.MonyJS.UserLoggedIn = <?php echo json_encode($this->getUserLoggedIn()); ?>;
+
+    window.MonyJS.CanSaveCards = <?php echo json_encode($this->getCanSaveCards()); ?>;
+
+    window.MonyJS.MonySavedCards = <?php echo json_encode($this->getSavedCardsFrontend()); ?>;
+
+    if( typeof window.MonyJS.MonySavedCards === 'undefined' || window.MonyJS.MonySavedCards.length < 1 ) {
+    	window.MonyJS.MonySavedCards = [];
+    }
+</script>

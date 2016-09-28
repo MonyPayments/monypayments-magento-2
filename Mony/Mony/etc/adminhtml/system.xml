@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento 2 extensions for Afterpay Payment
+ *
+ * @author Afterpay <steven.gunarso@touchcorp.com>
+ * @copyright 2016 Afterpay https://www.afterpay.com.au/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment">
+            <group id="mony_mony" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mony Payments</label>
+                <comment><![CDATA[<span class="mony-logo">&nbsp;</span><p><strong>Money made simpler </strong> <a href="https://www.monypayments.com/" target="_blank">About Us</a></p>]]></comment>
+
+                <attribute type="expanded">1</attribute>
+                <fieldset_css>complex monypayments-section</fieldset_css>
+                <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset</frontend_model>
+                <group id="mony_mony_basic" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Basic Settings]]></label>
+
+                    <!-- active -->
+                    <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Enabled</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/mony_mony/active</config_path>
+                    </field>
+
+                    <!-- title -->
+                    <field id="title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Title</label>
+                        <config_path>payment/mony_mony/title</config_path>
+                    </field>
+
+                    <!-- api mode -->
+                    <field id="api_mode" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>API Mode</label>
+                        <source_model>Mony\Mony\Model\Source\ApiMode</source_model>
+                        <config_path>payment/mony_mony/api_mode</config_path>
+                    </field>
+
+                    <!-- merchant id -->
+                    <field id="api_key" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>API Key</label>
+                        <config_path>payment/mony_mony/api_key</config_path>
+                    </field>
+
+                    <!-- merchant id -->
+                    <field id="merchant_id" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Merchant ID</label>
+                        <config_path>payment/mony_mony/merchant_id</config_path>
+                    </field>
+
+                    <!-- merchant key -->
+                    <field id="merchant_secret" translate="label" type="obscure" sortOrder="50" showInDefault="50" showInWebsite="1" showInStore="0">
+                        <label>Merchant Secret Key</label>
+                        <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+                        <config_path>payment/mony_mony/merchant_secret</config_path>
+                    </field>
+                </group>
+
+                <group id="mony_mony_advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Advanced Settings]]></label>
+
+                    <!-- save_cards -->
+                    <field id="save_cards" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Enable Save Cards</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/mony_mony/save_cards</config_path>
+                    </field>
+
+                    <!-- card types -->
+                    <field id="cctypes" translate="label" type="multiselect" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Credit Card Types</label>
+                        <source_model>Mony\Mony\Model\Source\CardTypes</source_model>
+                    </field>
+
+                    <!-- Debug mode -->
+                    <field id="debug" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Debug</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <config_path>payment/mony_mony/debug</config_path>
+                    </field>
+
+                    <!-- sort order -->
+                    <field id="sort_order" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Sort Order</label>
+                        <config_path>payment/mony_mony/sort_order</config_path>
+                    </field>
+                </group>
+
+                <group id="mony_mony_countryspecific" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label><![CDATA[Country Specific Settings]]></label>
+                    <!-- country enable -->
+                    <field id="allowspecific" translate="label" type="allowspecific" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Payment from Applicable Countries</label>
+                        <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                        <config_path>payment/mony_mony/allowspecific</config_path>
+                    </field>
+
+                    <!-- specific country -->
+                    <field id="specificcountry" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Payment from Specific Countries</label>
+                        <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                        <config_path>payment/mony_mony/specificcountry</config_path>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento 2 extensions for Mony Payment
+ *
+ * @author Mony <steven.gunarso@touchcorp.com>
+ * @copyright 2016 Mony https://www.monypayments.com.au/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Mony\Mony\Model\Adapter\ApiMode">
+        <arguments>
+            <argument name="environments" xsi:type="array">
+                <item name="qa" xsi:type="array">
+                    <item name="label" xsi:type="string">QA</item>
+                    <item name="api_url" xsi:type="string">https://pay-qa.secure-afterpay.com.au/v1/</item>
+                    <item name="web_url" xsi:type="string">https://buy-qa.paynow.touchcorp.net/</item>
+                </item>
+                <item name="sandbox" xsi:type="array">
+                    <item name="label" xsi:type="string">Sandbox</item>
+                    <item name="api_url" xsi:type="string">https://api-sandbox.secure-monypayments.com/v1/</item>
+                    <item name="web_url" xsi:type="string">https://buy-sandbox.monypayments.com/</item>
+                </item>
+                <item name="production" xsi:type="array">
+                    <item name="label" xsi:type="string">Production</item>
+                    <item name="api_url" xsi:type="string">https://api.secure-monypayments.com/v1/</item>
+                    <item name="web_url" xsi:type="string">https://buy.monypayments.com/</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mony\Mony\Model\Adapter\CardTypes">
+        <arguments>
+            <argument name="cctypes" xsi:type="array">
+                <item name="VI" xsi:type="array">
+                    <item name="label" xsi:type="string">Visa</item>
+                </item>
+                <item name="MC" xsi:type="array">
+                    <item name="label" xsi:type="string">MasterCard</item>
+                </item>
+                <item name="AE" xsi:type="array">
+                    <item name="label" xsi:type="string">American Express</item>
+                </item>
+                <item name="DI" xsi:type="array">
+                    <item name="label" xsi:type="string">Discover</item>
+                </item>
+                <item name="JCB" xsi:type="array">
+                    <item name="label" xsi:type="string">JCB</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Mony\Mony\Model\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Mony\Mony\Model\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">mony</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="debug" xsi:type="object">Mony\Mony\Model\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

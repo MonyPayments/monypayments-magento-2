@@ -1,0 +1,9 @@
+<?php
+/** @var Mony\Mony\Block\Config $this */
+?>
+<!--<script src="<?php echo $this->getMonyJsUrl() ?>"></script>-->
+<script>
+    window.MonyJS = window.MonyJS || {};
+    window.MonyJS.MonyJsUrl = "<?php echo $this->getMonyJsUrl() ?>";
+    window.MonyJS.MonyApiKey = "<?php echo $this->getMonyApiKey() ?>";
+</script>

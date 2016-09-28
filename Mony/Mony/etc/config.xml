@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento 2 extensions for Mony Payment
+ *
+ * @author Mony <steven.gunarso@touchcorp.com>
+ * @copyright 2016 Mony https://www.monypayments.com.au/
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <mony_mony>
+                <active>0</active>
+                <title>Mony Payment</title>
+                <api_mode>sandbox</api_mode>
+                <model>Mony\Mony\Model\Payment</model>
+                <payment_action>authorize_capture</payment_action>
+                <merchant_secret backend_model="Magento\Config\Model\Config\Backend\Encrypted" />
+                <save_cards>0</save_cards>
+                <allowspecific>1</allowspecific>
+                <specificcountry>AU</specificcountry>
+                <cctypes>AE,VI,MC,DI,JCB</cctypes>
+            </mony_mony>
+        </payment>
+    </default>
+</config>

@@ -1,0 +1,22 @@
+{
+    "name": "mony/module-mony",
+    "license": "OSL-3.0",
+    "type": "magento2-module",
+    "description": "Mony Payments Magento 2 Extension",
+    "require": {
+    },
+    "authors":[
+        {
+            "name":"Mony",
+            "email":"steven.gunarso@touchcorp.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mony\\Mony\\": ""
+        }
+    }
+}

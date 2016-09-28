@@ -1,0 +1,48 @@
+/**
+ * Magento 2 extensions for Mony Payments
+ *
+ * @author Mony Payments <steven.gunarso@touchcorp.com>
+ * @copyright 2016 Mony Payments https://www.monypayments.com/
+ */
+
+/** frontend-saved-cards-page.css */
+.mony-footer {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+
+    margin-top: 10px;
+    line-height: 40px;
+}
+
+.mony-checkout {
+    margin-bottom: 20px;
+    line-height: 35px;
+}
+
+
+.mony-footer-logo {
+    background-image: url("../images/mony-logo.jpg");
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.mony-footer .mony-footer-logo {
+    background-size: 60px 60px;
+    height: 52px;
+    width: 60px;
+}
+
+.mony-checkout .mony-footer-logo {
+    background-size: 50px 50px;
+    height: 43px;
+    width: 50px;
+}
+
+#mony-saved-cards .mony-checkout {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+
+    margin-top:10px;
+}

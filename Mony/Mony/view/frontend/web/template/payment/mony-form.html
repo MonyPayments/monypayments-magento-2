@@ -1,0 +1,128 @@
+<!--
+/**
+ * Mony Checkout Template
+ *
+ * @category    Mony
+ * @package     Mony_Mony
+ * @author      Mony Payments 
+ * @copyright   Mony (http://monypayments.com.au)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<div class="payment-method" data-bind="css: {'_active': (getCode() == isChecked())}">
+    <div class="payment-method-title field choice">
+        <input type="radio"
+               name="payment[method]"
+               class="radio"
+               data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()"/>
+        <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+    </div>
+    <div class="payment-method-content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <div class="payment-method-billing-address">
+            <!-- ko foreach: $parent.getRegion(getBillingAddressFormName()) -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+
+
+        <div id="mony-saved-cards" data-bind="visible: typeof(window.MonyJS.MonySavedCards) !== 'undefined' && window.MonyJS.MonySavedCards.length > 0" 
+            style="margin-bottom: 20px" >
+            <select 
+                data-bind="attr: {'id': getCode() + '-payment-select'}, 
+                    options: window.MonyJS.MonySavedCards,
+                    optionsCaption: 'Select a card',
+                    optionsText: function(item) {
+                        return item.display;
+                    },
+                    optionsValue: function(item) {
+                        return item.token;
+                    },
+                    event: { 
+                        change: savedCardValueChanged
+                    }"
+                name="payment[payment_select]" 
+                class="payment-select required-entry">
+
+                <option data-bind="text:display, value:token" />
+
+            </select>
+
+            <div class="mony-checkout">
+                Powered by <a target="_blank" href="https://www.monypayments.com/"> <span class="mony-footer-logo"></span> </a>
+            </div>
+        </div>
+
+        <form class="form" 
+            data-bind="attr: {'id': getCode() + '-form'}, visible: typeof(window.MonyJS.MonySavedCards) === 'undefined' || window.MonyJS.MonySavedCards.length < 1">
+                        
+            <fieldset class="fieldset">
+                <div class="field required">
+                    <label data-bind="attr: {for: getCode() + '_cc_owner'}" class="label">
+                        <span><!-- ko i18n: 'Name on Card'--><!-- /ko --></span>
+                    </label>
+                    <div class="control">
+                        <input type="text" name="payment[cc_owner]" class="input-text" value=""
+                        data-mony-card-name=""
+                        data-bind="attr: {
+                            autocomplete: off,
+                            id: getCode() + '_cc_owner',
+                            title: $t('Credit Card Owner'),
+                            'data-container': getCode() + '-cc-owner',
+                        },
+                        enable: isActive($parents),
+                        valueUpdate: 'keyup' "/>
+                    </div>
+                </div>
+            </fieldset>
+            <!-- ko template: 'Magento_Payment/payment/cc-form' --><!-- /ko -->
+
+            <div class="mony-checkout">
+                Powered by <a target="_blank" href="https://www.monypayments.com/"> <span class="mony-footer-logo"></span> </a>
+            </div>
+
+            <fieldset class="fieldset">
+                <div class="field" data-bind="visible: window.MonyJS.UserLoggedIn && window.MonyJS.CanSaveCards" >
+                    <label data-bind="attr: {for: getCode() + '_cc_save_card'}" class="label">
+                        <span><!-- ko i18n: 'Save this card for future use'--><!-- /ko --></span>
+                    </label>
+                    <div class="control">
+                        <input type="checkbox" name="payment[cc_save_card]" class="input-text" value="1"
+                        data-mony-save-card=""
+                        data-bind="attr: {
+                            autocomplete: off,
+                            id: getCode() + '_cc_save_card',
+                            title: $t('Save Credit Card'),
+                            'data-container': getCode() + '-cc-save-card',
+                        },
+                        enable: isActive($parents),
+                        valueUpdate: 'keyup' "/>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+        <div class="checkout-agreements-block">
+            <!-- ko foreach: $parent.getRegion('before-place-order') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+            <!--/ko-->
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button class="action primary checkout"
+                        type="submit"
+                        data-bind="
+                        click: continueMonyPayment,
+                        attr: {title: $t('Place Order')},
+                        css: {disabled: !isPlaceOrderActionAllowed()},
+                        enable: (getCode() == isChecked())
+                        "
+                        disabled>
+                    <span data-bind="text: $t('Place Order')"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<?php
+/** @var Mony\Mony\Block\Card $this */
+?>
+
+<?php
+$saved_cards = $this->getSavedCards();
+?>
+
+
+
+<?php if ($saved_cards) : ?>
+    <p><?php echo __("Click 'delete' to remove saved card or tick 'save' during checkout to add new card information."); ?></p>
+
+    <div class="box-card-save">
+        <table class="data-table save-card" id="my-cards-table">
+            <thead>
+                <tr class="first last">
+                    <th><?php echo __('Type') ?></th>
+                    <th><?php echo __('Card Number') ?></th>
+                    <th><?php echo __('Expiry Date') ?></th>
+                    <th class="a-center view last"><?php echo __('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($saved_cards as $card) : ?>
+                <tr>
+                    <td><?php echo $card["brand"]; ?></td>
+                    <td>**** **** **** <?php echo $card["truncatedNumber"] ?></td>
+                    <td><?php echo $card["expiryMonth"] . " / " . $card["expiryYear"]; ?></td>
+                    <td class="a-center view last">
+                        <span class="nobr">
+                            <a href="<?php echo $this->getDeleteUrl($card['token']); ?>"><?php echo __('Delete') ?></a>
+                        </span>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+
+<?php else: ?>
+    <p><?php echo __('You currently have no saved payment information, you can save a payment method when making a purchase.'); ?></p>
+<?php endif; ?>
+
+<div class="mony-footer">
+    Powered by <a target="_blank" href="https://www.monypayments.com/"> <span class="mony-footer-logo"></span> </a>
+</div>
