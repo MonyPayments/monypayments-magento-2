@@ -8,7 +8,7 @@
 <li> Unzip the file and follow the instructions to copy across the files Code Directory </li>
 <li> Copy folder and all files in /Mony folder from the unzipped plugin into [MAGENTO]/app/code </li>
 <li>
-	<p><strong>Installation Steps: </p>
+	<p><strong>Installation Steps:</strong> </p>
 	<ul>
 		<li> Open Command Line Interface </li>
 		<li> In CLI, run the below command to enable Afterpay module: <br/> <em>php bin/magento module:enable Mony_Mony</em> </li>
