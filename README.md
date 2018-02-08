@@ -8,21 +8,13 @@
 <li> Unzip the file and follow the instructions to copy across the files Code Directory </li>
 <li> Copy folder and all files in /Mony folder from the unzipped plugin into [MAGENTO]/app/code </li>
 <li>
-	<p>There are 2 ways to install Mony Plugin</p>
-	<p> <strong>Alternative 1</strong> (currently unstable due to various Magento 2 bugs): </p>
+	<p><strong>Installation Steps: </p>
 	<ul>
-		<li> Mony Plugin can be copy-pasted directly on the "app/Code" folder by creating the following structure "app/Code/Mony/Mony"</li>
-		<li> Then, go to the Admin and go to "System - Web Setup Wizard - Component Manager"</li>
-		<li> You will see Mony still disabled, you can enable it by clicking the option on the right hand side</li>
-		<li> If the Readiness Check fails and it says CRON not running, go to the Magento CLI.
-		 Then, run the 3 CRON operations described above (without using the time declaration, e.g "./bin/magento cron:run". Then try again.
-		</li>
-	</ul>
-
-	<p><strong>Alternative 2 </strong> (more stable): </p>
-	<ul>
-		<li> Go to the Magento CLI and use "./bin/magento module:enable Mony_Mony" </li>
-		<li> The system will most likely require us to setup upgrade afterwards: "./bin/magento setup:upgrade" </li>
+		<li> Open Command Line Interface </li>
+		<li> In CLI, run the below command to enable Afterpay module: <br/> <em>php bin/magento module:enable Mony_Mony</em> </li>
+		<li> In CLI, run the Magento setup upgrade: <br/> <em>php bin/magento setup:upgrade</em> </li>
+		<li> In CLI, run the Magento Dependencies Injection Compile: <br/> <em>php bin/magento setup:di:compile</em> </li>
+		<li> In CLI, run the Magento Static Content deployment: <br/> <em>php bin/magento setup:static-content:deploy</em> </li>
 	</ul>
 </li>
 <li> Login to Magento admin and go to System > Cache Management </li>
