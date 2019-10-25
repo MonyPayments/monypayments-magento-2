@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
-	<update handle="customer_account"/>  
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+	<update handle="customer_account"/>
     <head>
         <css src="Mony_Mony::css/mony.css"/>
     </head>
     <body>
         <attribute name="class" value="account"/>
         <referenceContainer name="content">
-        	<block class="Mony\Mony\Block\Card" name="saved-cards-block" 
+        	<block class="Mony\Mony\Block\Card" name="saved-cards-block"
         		template="Mony_Mony::saved-cards.phtml"/>
         </referenceContainer>
     </body>

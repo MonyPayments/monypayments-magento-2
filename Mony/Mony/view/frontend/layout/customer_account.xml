@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" label="Customer My Account (All Pages)" design_abstraction="custom">
     <body>
         <attribute name="class" value="account"/>
         <referenceContainer name="sidebar.main">
             <block class="Magento\Framework\View\Element\Html\Links" name="customer_account_navigation_secondary" after="customer_account_navigation" template="Magento_Customer::account/navigation.phtml">
-                <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-mony-saved-cards"> 
+                <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-mony-saved-cards">
                     <!-- duplicate this as many times as you need, just make sure the name is unique -->
                     <arguments>
                         <argument name="label" xsi:type="string" translate="true">Saved Cards</argument>
